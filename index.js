@@ -2,6 +2,7 @@ const express= require('express');
 const app=express();
 const PORT = 3000;
 
+
 // Leer un archivo
 const fs=require('fs');
 
@@ -56,6 +57,17 @@ app.put('/libros/:id', (req, res) =>{
 });
 
 
-app.listen(PORT,() =>{
-    console.log(`Servidor corriendo en  http://localhost:${PORT}`);
+// Ver todos los libros del archivo
+app.get('/libros', (req, res) =>{
+    let libros= leerLibros();
+    if(libros.length>0){
+        res.status(200).json({status:200, message: 'Success', libros});
+    }else{
+        res.status(400).json({status:400, message: 'No existen libros en la biblioteca...'});
+    }
+    
+});
+
+app.listen(PORT, () =>{
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

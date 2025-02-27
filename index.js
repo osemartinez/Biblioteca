@@ -18,6 +18,7 @@ function guardarLibros(clibros){
     fs.writeFileSync('libros.json', JSON.stringify(clibros,null,2));
 }
 
+//NIMER ALVAREZ
 // Actualizar la información de un libro existente
 app.put('/libros/:id', (req, res) =>{
     let id=parseInt(req.params.id);
@@ -57,7 +58,7 @@ app.put('/libros/:id', (req, res) =>{
 
 });
 
-
+//JOSE MARTINEZ
 // Ver todos los libros del archivo
 app.get('/libros', (req, res) =>{
     let libros= leerLibros();
@@ -69,8 +70,7 @@ app.get('/libros', (req, res) =>{
     
 });
 
-
-
+//WILMER AGUILAR
 // Agregar un nuevo libro
 app.use(express.json());
 
@@ -89,8 +89,6 @@ app.post('/libros', (req, res) => {
     AgregarLibro(libros, libroFinal);
     res.status(201).json({ status: 201, message: 'Libro agregado', libroFinal});
 });
-
-=======
 
 app.listen(PORT, () =>{
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
